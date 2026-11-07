@@ -1,0 +1,26 @@
+field,value
+business_name,{{ your_business_name }}
+business_address,{{ your_address }}
+business_email,{{ your_email }}
+business_phone,{{ your_phone }}
+tax_id_label,{{ your_tax_id_label }}
+tax_id,{{ your_tax_id }}
+invoice_number,{{ invoice_number }}
+issue_date,{{ issue_date }}
+due_date,{{ due_date }}
+customer_name,{{ customer_name }}
+customer_address,{{ customer_address }}
+customer_email,{{ customer_email }}
+currency,{{ currency }}
+
+line_no,description,qty,unit_price,amount
+1,{{ item_1_description }},{{ qty_1 }},{{ unit_price_1 }},{{ amount_1 }}
+2,{{ item_2_description }},{{ qty_2 }},{{ unit_price_2 }},{{ amount_2 }}
+3,{{ item_3_description }},{{ qty_3 }},{{ unit_price_3 }},{{ amount_3 }}
+
+summary,amount
+subtotal,{{ subtotal }}
+tax_label,{{ tax_label }}
+tax_rate_percent,{{ tax_rate }}
+tax_amount,{{ tax_amount }}
+total,{{ total }}

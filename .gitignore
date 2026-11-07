@@ -1,0 +1,11 @@
+# Filled-in documents may contain real business or customer data — keep them out of the repo.
+filled/
+*.filled.md
+*.filled.html
+*.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice {{ invoice_number }}</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e2e2e2; --accent:#2563eb; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--ink); margin: 0; padding: 32px; }
+  .sheet { max-width: 800px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+  h1 { font-size: 28px; letter-spacing: 2px; margin: 0 0 4px; }
+  .muted { color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .meta { text-align: right; font-size: 13px; }
+  .parties { display: flex; gap: 40px; flex-wrap: wrap; margin: 28px 0; }
+  .parties h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 0 0 6px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+  th:last-child, td:last-child, th.num, td.num { text-align: right; }
+  tfoot td { border: none; }
+  .total td { font-weight: 700; font-size: 16px; border-top: 2px solid var(--ink); }
+  footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+  a { color: var(--accent); }
+  @media print { body { padding: 0; } .noprint { display: none; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div>
+      <h1>INVOICE</h1>
+      <div class="muted">
+        <strong>{{ your_business_name }}</strong><br>
+        {{ your_address_line_1 }}<br>
+        {{ your_address_line_2 }}<br>
+        {{ your_email }} · {{ your_phone }}<br>
+        {{ your_tax_id_label }}: {{ your_tax_id }}
+      </div>
+    </div>
+    <div class="meta muted">
+      <div><strong>Invoice #:</strong> {{ invoice_number }}</div>
+      <div><strong>Issue date:</strong> {{ issue_date }}</div>
+      <div><strong>Due date:</strong> {{ due_date }}</div>
+    </div>
+  </header>
+
+  <div class="parties">
+    <div>
+      <h2>Bill to</h2>
+      <div class="muted">
+        {{ customer_name }}<br>
+        {{ customer_address }}<br>
+        {{ customer_email }}
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Description</th><th class="num">Qty</th><th class="num">Unit price</th><th class="num">Amount</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>{{ item_1_description }}</td><td class="num">{{ qty_1 }}</td><td class="num">{{ unit_price_1 }}</td><td class="num">{{ amount_1 }}</td></tr>
+      <tr><td>2</td><td>{{ item_2_description }}</td><td class="num">{{ qty_2 }}</td><td class="num">{{ unit_price_2 }}</td><td class="num">{{ amount_2 }}</td></tr>
+      <tr><td>3</td><td>{{ item_3_description }}</td><td class="num">{{ qty_3 }}</td><td class="num">{{ unit_price_3 }}</td><td class="num">{{ amount_3 }}</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="4" class="num">Subtotal</td><td class="num">{{ subtotal }}</td></tr>
+      <tr><td colspan="4" class="num">{{ tax_label }} ({{ tax_rate }}%)</td><td class="num">{{ tax_amount }}</td></tr>
+      <tr class="total"><td colspan="4" class="num">Total due</td><td class="num">{{ currency }}{{ total }}</td></tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <p><strong>Payment details:</strong> {{ payment_instructions }}</p>
+    <p><strong>Notes:</strong> {{ notes }}</p>
+    <p class="noprint">Generated from a template by <a href="https://free-bizdocs.com/en/">Free BizDoc</a>. Prefer a filled-in PDF with tax calculated automatically? Use the free <a href="https://free-bizdocs.com/en/invoice">invoice generator</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
